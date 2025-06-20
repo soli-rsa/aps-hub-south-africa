@@ -1,10 +1,10 @@
+
 import { GRADE_VALUES } from '@/constants/constants';
 import { SOUTH_AFRICAN_UNIVERSITIES } from '@/constants/universityRules';
 
 export interface SubjectGrade {
-  subjectId: string;
-  subjectName: string;
-  grade: string;
+  subject: string;
+  level: number;
 }
 
 export interface ApsResult {
@@ -15,9 +15,24 @@ export interface ApsResult {
 }
 
 export class ApsCalculatorService {
+  static calculateAPS(subjects: SubjectGrade[]): number {
+    const validSubjects = subjects.filter(s => s.subject && s.level > 0);
+    
+    // Take best 6 subjects (excluding Life Orientation if present)
+    const filteredSubjects = validSubjects.filter(s => 
+      s.subject.toLowerCase() !== 'life orientation'
+    );
+    
+    const sortedSubjects = filteredSubjects
+      .sort((a, b) => b.level - a.level)
+      .slice(0, 6);
+    
+    return sortedSubjects.reduce((total, subject) => total + subject.level, 0);
+  }
+
   static calculateTotalAps(subjects: SubjectGrade[]): number {
     return subjects.reduce((total, subject) => {
-      const gradeValue = GRADE_VALUES[subject.grade] || 0;
+      const gradeValue = subject.level || 0;
       return total + gradeValue;
     }, 0);
   }
@@ -31,7 +46,7 @@ export class ApsCalculatorService {
       // Apply university-specific exclusions
       if (university.excludedSubjects) {
         filteredSubjects = subjects.filter(
-          subject => !university.excludedSubjects!.includes(subject.subjectId)
+          subject => !university.excludedSubjects!.includes(subject.subject.toLowerCase().replace(/\s+/g, '_'))
         );
       }
 
@@ -55,21 +70,10 @@ export class ApsCalculatorService {
       errors.push('Maximum 7 subjects allowed for APS calculation');
     }
 
-    // Check for required language subject
-    const hasLanguage = subjects.some(subject => 
-      subject.subjectId.includes('english') || 
-      subject.subjectId.includes('afrikaans') ||
-      subject.subjectId.includes('language')
-    );
-    
-    if (!hasLanguage) {
-      errors.push('At least one language subject is required');
-    }
-
     // Check for valid grades
     subjects.forEach(subject => {
-      if (!GRADE_VALUES[subject.grade]) {
-        errors.push(`Invalid grade for ${subject.subjectName}: ${subject.grade}`);
+      if (subject.level < 1 || subject.level > 7) {
+        errors.push(`Invalid level for ${subject.subject}: ${subject.level}`);
       }
     });
 
@@ -87,7 +91,7 @@ export class ApsCalculatorService {
     }
 
     return {
-      totalAps: this.calculateTotalAps(subjects),
+      totalAps: this.calculateAPS(subjects),
       subjects: [...subjects],
       calculatedAt: new Date(),
       universitySpecificAps: this.calculateUniversitySpecificAps(subjects)

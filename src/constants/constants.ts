@@ -6,59 +6,44 @@ export interface Subject {
   isLanguage?: boolean;
 }
 
-export const NSC_SUBJECTS: Subject[] = [
-  // Core subjects
-  { id: 'mathematics', name: 'Mathematics', category: 'core' },
-  { id: 'mathematical_literacy', name: 'Mathematical Literacy', category: 'core' },
-  { id: 'english_home_language', name: 'English Home Language', category: 'language', isLanguage: true },
-  { id: 'english_first_additional', name: 'English First Additional Language', category: 'language', isLanguage: true },
-  { id: 'afrikaans_home_language', name: 'Afrikaans Home Language', category: 'language', isLanguage: true },
-  { id: 'afrikaans_first_additional', name: 'Afrikaans First Additional Language', category: 'language', isLanguage: true },
-  { id: 'life_orientation', name: 'Life Orientation', category: 'core' },
-  
-  // Sciences
-  { id: 'physical_sciences', name: 'Physical Sciences', category: 'elective' },
-  { id: 'life_sciences', name: 'Life Sciences', category: 'elective' },
-  { id: 'geography', name: 'Geography', category: 'elective' },
-  
-  // Commercial subjects
-  { id: 'accounting', name: 'Accounting', category: 'elective' },
-  { id: 'business_studies', name: 'Business Studies', category: 'elective' },
-  { id: 'economics', name: 'Economics', category: 'elective' },
-  
-  // Humanities
-  { id: 'history', name: 'History', category: 'elective' },
-  { id: 'tourism', name: 'Tourism', category: 'elective' },
-  { id: 'consumer_studies', name: 'Consumer Studies', category: 'elective' },
-  
-  // Technical subjects
-  { id: 'information_technology', name: 'Information Technology', category: 'elective' },
-  { id: 'computer_applications_technology', name: 'Computer Applications Technology', category: 'elective' },
-  { id: 'engineering_graphics_design', name: 'Engineering Graphics and Design', category: 'elective' },
-  { id: 'civil_technology', name: 'Civil Technology', category: 'elective' },
-  { id: 'electrical_technology', name: 'Electrical Technology', category: 'elective' },
-  { id: 'mechanical_technology', name: 'Mechanical Technology', category: 'elective' },
-  
-  // Additional languages
-  { id: 'zulu_home_language', name: 'isiZulu Home Language', category: 'language', isLanguage: true },
-  { id: 'zulu_first_additional', name: 'isiZulu First Additional Language', category: 'language', isLanguage: true },
-  { id: 'xhosa_home_language', name: 'isiXhosa Home Language', category: 'language', isLanguage: true },
-  { id: 'xhosa_first_additional', name: 'isiXhosa First Additional Language', category: 'language', isLanguage: true },
-  { id: 'sepedi_home_language', name: 'Sepedi Home Language', category: 'language', isLanguage: true },
-  { id: 'sepedi_first_additional', name: 'Sepedi First Additional Language', category: 'language', isLanguage: true },
-  { id: 'setswana_home_language', name: 'Setswana Home Language', category: 'language', isLanguage: true },
-  { id: 'setswana_first_additional', name: 'Setswana First Additional Language', category: 'language', isLanguage: true },
-  
-  // Arts and culture
-  { id: 'visual_arts', name: 'Visual Arts', category: 'elective' },
-  { id: 'dramatic_arts', name: 'Dramatic Arts', category: 'elective' },
-  { id: 'music', name: 'Music', category: 'elective' },
-  { id: 'dance_studies', name: 'Dance Studies', category: 'elective' },
-  
-  // Additional subjects
-  { id: 'agricultural_sciences', name: 'Agricultural Sciences', category: 'elective' },
-  { id: 'agricultural_management_practices', name: 'Agricultural Management Practices', category: 'elective' },
-  { id: 'hospitality_studies', name: 'Hospitality Studies', category: 'elective' }
+export const NSC_SUBJECTS: string[] = [
+  'Mathematics',
+  'Mathematical Literacy', 
+  'English Home Language',
+  'English First Additional Language',
+  'Afrikaans Home Language',
+  'Afrikaans First Additional Language',
+  'Life Orientation',
+  'Physical Sciences',
+  'Life Sciences',
+  'Geography',
+  'Accounting',
+  'Business Studies',
+  'Economics',
+  'History',
+  'Tourism',
+  'Consumer Studies',
+  'Information Technology',
+  'Computer Applications Technology',
+  'Engineering Graphics and Design',
+  'Civil Technology',
+  'Electrical Technology',
+  'Mechanical Technology',
+  'isiZulu Home Language',
+  'isiZulu First Additional Language',
+  'isiXhosa Home Language', 
+  'isiXhosa First Additional Language',
+  'Sepedi Home Language',
+  'Sepedi First Additional Language',
+  'Setswana Home Language',
+  'Setswana First Additional Language',
+  'Visual Arts',
+  'Dramatic Arts',
+  'Music',
+  'Dance Studies',
+  'Agricultural Sciences',
+  'Agricultural Management Practices',
+  'Hospitality Studies'
 ];
 
 export const GRADE_VALUES: Record<string, number> = {
