@@ -17,6 +17,14 @@ export interface University {
   established: number;
 }
 
+export interface UniversityRule {
+  id: string;
+  name: string;
+  numberOfSubjectsToCount: number;
+  includeBestSubjectsOnly: boolean;
+  excludedSubjects?: string[];
+}
+
 export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
   {
     id: 'uct',
@@ -150,5 +158,78 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     apsRequirement: 20,
     popularPrograms: ['Business', 'Education', 'Law', 'Psychology', 'Theology'],
     established: 1873
+  }
+];
+
+export const UNIVERSITY_RULES: UniversityRule[] = [
+  {
+    id: 'general',
+    name: 'General APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
+    excludedSubjects: ['life_orientation']
+  },
+  {
+    id: 'uct',
+    name: 'UCT APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
+    excludedSubjects: ['life_orientation']
+  },
+  {
+    id: 'stellenbosch',
+    name: 'Stellenbosch APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
+    excludedSubjects: ['life_orientation']
+  },
+  {
+    id: 'wits',
+    name: 'Wits APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
+    excludedSubjects: ['life_orientation']
+  },
+  {
+    id: 'up',
+    name: 'UP APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
+  },
+  {
+    id: 'ukzn',
+    name: 'UKZN APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
+  },
+  {
+    id: 'rhodes',
+    name: 'Rhodes APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
+  },
+  {
+    id: 'ufs',
+    name: 'UFS APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
+  },
+  {
+    id: 'nmu',
+    name: 'NMU APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
+  },
+  {
+    id: 'cut',
+    name: 'CUT APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
+  },
+  {
+    id: 'unisa',
+    name: 'UNISA APS Calculation',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
   }
 ];
