@@ -1,5 +1,5 @@
 
-export interface University {
+export interface UniversityRule {
   id: string;
   name: string;
   shortName: string;
@@ -15,13 +15,17 @@ export interface University {
   excludedSubjects?: string[];
   popularPrograms: string[];
   established: number;
+  numberOfSubjectsToCount: number;
+  includeBestSubjectsOnly: boolean;
 }
 
-export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
+export const UNIVERSITY_RULES: UniversityRule[] = [
   {
     id: 'uct',
     name: 'University of Cape Town',
     shortName: 'UCT',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'public_research',
     location: { province: 'Western Cape', city: 'Cape Town' },
     applicationUrl: 'https://www.uct.ac.za/apply',
@@ -36,6 +40,8 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     id: 'stellenbosch',
     name: 'Stellenbosch University',
     shortName: 'SU',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'public_research',
     location: { province: 'Western Cape', city: 'Stellenbosch' },
     applicationUrl: 'https://www.sun.ac.za/english/admission-settlement',
@@ -50,6 +56,8 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     id: 'wits',
     name: 'University of the Witwatersrand',
     shortName: 'Wits',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'public_research',
     location: { province: 'Gauteng', city: 'Johannesburg' },
     applicationUrl: 'https://www.wits.ac.za/application/',
@@ -64,19 +72,23 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     id: 'up',
     name: 'University of Pretoria',
     shortName: 'UP',
-    category: 'public_research', 
+    category: 'public_research',
     location: { province: 'Gauteng', city: 'Pretoria' },
     applicationUrl: 'https://www.up.ac.za/admissions',
     website: 'https://www.up.ac.za',
     minAps: 28,
     apsRequirement: 28,
     popularPrograms: ['Veterinary Science', 'Engineering', 'Medicine', 'Law', 'Business'],
-    established: 1908
+    established: 1908,
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
   },
   {
     id: 'ukzn',
     name: 'University of KwaZulu-Natal',
     shortName: 'UKZN',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'public_comprehensive',
     location: { province: 'KwaZulu-Natal', city: 'Durban' },
     applicationUrl: 'https://www.ukzn.ac.za/apply-to-study-at-ukzn/',
@@ -90,6 +102,8 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     id: 'rhodes',
     name: 'Rhodes University',
     shortName: 'RU',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'public_research',
     location: { province: 'Eastern Cape', city: 'Grahamstown' },
     applicationUrl: 'https://www.ru.ac.za/admissions/',
@@ -103,6 +117,8 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     id: 'ufs',
     name: 'University of the Free State',
     shortName: 'UFS',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'public_comprehensive',
     location: { province: 'Free State', city: 'Bloemfontein' },
     applicationUrl: 'https://www.ufs.ac.za/admissions',
@@ -116,6 +132,8 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     id: 'nmu',
     name: 'Nelson Mandela University',
     shortName: 'NMU',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'public_comprehensive',
     location: { province: 'Eastern Cape', city: 'Port Elizabeth' },
     applicationUrl: 'https://www.mandela.ac.za/Study-at-Mandela/Admissions',
@@ -129,6 +147,8 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     id: 'cut',
     name: 'Central University of Technology',
     shortName: 'CUT',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'university_of_technology',
     location: { province: 'Free State', city: 'Bloemfontein' },
     applicationUrl: 'https://www.cut.ac.za/admissions',
@@ -142,6 +162,8 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     id: 'unisa',
     name: 'University of South Africa',
     shortName: 'UNISA',
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true,
     category: 'public_comprehensive',
     location: { province: 'Gauteng', city: 'Pretoria' },
     applicationUrl: 'https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission',
@@ -150,5 +172,19 @@ export const SOUTH_AFRICAN_UNIVERSITIES: University[] = [
     apsRequirement: 20,
     popularPrograms: ['Business', 'Education', 'Law', 'Psychology', 'Theology'],
     established: 1873
+  },
+  {
+    id: 'general',
+    name: 'General APS Calculation',
+    shortName: 'General',
+    category: 'public_research', // Assuming a default category, adjust if needed
+    location: { province: 'National', city: 'Any' }, // Assuming general applicability
+    applicationUrl: '', // No specific URL for general calculation
+    website: '', // No specific website for general calculation
+    excludedSubjects: ['life_orientation'], // As specified
+    popularPrograms: [], // Not applicable
+    established: 0, // Not applicable
+    numberOfSubjectsToCount: 6,
+    includeBestSubjectsOnly: true
   }
 ];
